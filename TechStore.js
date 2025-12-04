@@ -101,3 +101,14 @@ console.log(audio);
 //6. Produto "Premium"
 /* const premium = inventario.forEach (i => i.preco >) */
 
+//9. Adicionar Produto Novo:
+console.log("-9------");
+inventario.push({
+  id: 6,
+  categoria: "Fotografia",
+  produto: "Papel fotográfico",
+  preco: 15,
+  quantidade: 25,
+});
+
+console.log(inventario);
