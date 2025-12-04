@@ -32,6 +32,7 @@ const inventario = [
 console.log(inventario);
 
 console.log("-------");
+// 1.
 
 function atualizarPreco(id, novoPreco) {
 
@@ -46,6 +47,8 @@ function atualizarPreco(id, novoPreco) {
 atualizarPreco(2, 900)
 
 console.log("-------");
+//2. 
+
 const totalInventario = inventario.reduce(
   (acc, n) => acc + n.preco * n.quantidade,
   0
@@ -54,6 +57,7 @@ console.log(`O total do inventário é: ${totalInventario.toFixed(2)} EUR`);
 console.log(inventario);
 
 console.log("-------");
+//3.
 
 function registarVenda(estoque, nome) {
 
@@ -72,6 +76,23 @@ registarVenda(1, 'Ipad')
 registarVenda(1, 'Coluna de Som')
 
 console.log("-------");
+//4.
+
+function limpezaStock() {
+  for (let i = 0; i < inventario.length; ) {
+    if (inventario[i].quantidade === 0) {
+      inventario.splice(i, 1);
+    } else {
+      i++;
+    }
+  }
+
+  console.log('Inventário atualizado:', inventario);
+}
+
+limpezaStock();
+
+console.log("-------");
 
 //5. Filtro de Categoria
 const audio = inventario.filter(i => i.categoria === "Som")
@@ -79,3 +100,4 @@ console.log(audio);
 
 //6. Produto "Premium"
 /* const premium = inventario.forEach (i => i.preco >) */
+
