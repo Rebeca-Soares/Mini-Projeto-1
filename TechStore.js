@@ -32,18 +32,23 @@ const inventario = [
 console.log(inventario);
 
 console.log("-------");
-/* function atualizarPreco(id, novoPreco) {
-  inventario.find((a) => a.id === id);
-  inventario.preco = novoPreco;
 
-  return inventario;
-}
- */
-/* console.log(atualizarPreco(5, 800)); */
 
 console.log("-------");
-
-console.log("-------");
-
-const totalInventario = inventario.reduce((acc, n) => acc + n.preco * n.quantidade, 0);
+const totalInventario = inventario.reduce(
+  (acc, n) => acc + n.preco * n.quantidade,
+  0
+);
 console.log(`O total do inventário é: ${totalInventario.toFixed(2)} EUR`);
+
+console.log("-------");
+
+
+console.log("-------");
+
+//5. Filtro de Categoria
+const audio = inventario.filter(i => i.categoria === "Som")
+console.log(audio);
+
+//6. Produto "Premium"
+const premium = inventario.forEach (i => i.preco > )
