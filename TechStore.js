@@ -49,27 +49,31 @@ atualizarPreco(2, 900);
 console.log("\n--2------");
 
 function registarVenda(estoque, nome) {
-  const item = inventario.find((produto) => produto.produto === nome);
 
-  if (estoque <= item.quantidade) {
-    item.quantidade -= estoque;
-    console.log(`Produto: ${nome} Qnt: ${estoque} UN - Vendido.`);
+  const item = inventario.find(produto  => produto.produto === nome)
+  
+  if(estoque <= item.quantidade){
+
+    let total = item.preco * estoque
+
+    let desconto = 0;
+
+    if (total > 200){
+      desconto = total * 0.10
+      total -= desconto
+    }
+
+      item.quantidade -= estoque
+      console.log(`Produto: ${nome} - Qnt: ${estoque} UN - Desconto ${desconto} - Preço Total: ${total}.`)
+
   } else {
-    console.log(nome, "Quantidade insuficiente!");
+      console.log(nome, 'Sem Stock!');
   }
-  let totalCompra = inventario.preco * estoque;
-  let desconto = 0;
-
-  if (totalCompra > 200) {
-    desconto = totalCompra * 0.1;
-    totalCompra -= desconto;
-  }
-  console.log(`Você ganhou desconto e pagou ${totalCompra}`);
 }
 
-registarVenda(9, "Portatil");
-registarVenda(1, "Ipad");
-registarVenda(1, "Coluna de Som");
+registarVenda(9, 'Portatil')
+registarVenda(1, 'Ipad')
+registarVenda(1, 'Coluna de Som')
 
 //3.
 console.log("\n--3------");
