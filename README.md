@@ -30,13 +30,10 @@ As ações contidas nesse sistema ajudam e facilitam o dia a dia de quem gere o 
 
 # Fluxogramas
 
-## Atualizar Preço
+| Atualizar Preço  | Valor Total do Inventário|
+| ------------- | ------------- |
+| <img width="638" height="511" alt="image" src="https://github.com/user-attachments/assets/a77c991a-5378-4577-8958-ff8666b04dc3" />  | <img width="494" height="531" alt="Fluxograma - Total Inventáriopng" src="https://github.com/user-attachments/assets/5385b1d0-3f60-40bb-8460-175f32aa4bdf" />|
 
-<img width="638" height="511" alt="image" src="https://github.com/user-attachments/assets/a77c991a-5378-4577-8958-ff8666b04dc3" />
-
-## Valor Total do Inventário
-
-<img width="191" height="501" alt="image" src="https://github.com/user-attachments/assets/ac2f632d-e073-4f1d-8d97-444fba96d393" />
 
 # Desenvolvido por:
 👩‍💻 Natália Joaquim (219)
