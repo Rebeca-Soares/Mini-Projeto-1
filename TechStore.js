@@ -33,6 +33,17 @@ console.log(inventario);
 
 console.log("-------");
 
+function atualizarPreco(id, novoPreco) {
+
+  const valor = inventario.find(produto  => produto.id === id)
+  
+  if(valor){
+      valor.preco = novoPreco
+      console.log(valor.produto, 'novo preço:', novoPreco)
+  }
+}
+
+atualizarPreco(2, 900)
 
 console.log("-------");
 const totalInventario = inventario.reduce(
@@ -40,9 +51,25 @@ const totalInventario = inventario.reduce(
   0
 );
 console.log(`O total do inventário é: ${totalInventario.toFixed(2)} EUR`);
+console.log(inventario);
 
 console.log("-------");
 
+function registarVenda(estoque, nome) {
+
+  const item = inventario.find(produto  => produto.produto === nome)
+  
+  if(estoque <= item.quantidade){
+      item.quantidade -= estoque
+      console.log(`Produto: ${nome} Qnt: ${estoque} UN - Vendido.`)
+  } else {
+      console.log(nome, 'Quantidade insuficiente!');
+  }
+}
+
+registarVenda(9, 'Portatil')
+registarVenda(1, 'Ipad')
+registarVenda(1, 'Coluna de Som')
 
 console.log("-------");
 
@@ -51,4 +78,4 @@ const audio = inventario.filter(i => i.categoria === "Som")
 console.log(audio);
 
 //6. Produto "Premium"
-const premium = inventario.forEach (i => i.preco > )
+/* const premium = inventario.forEach (i => i.preco >) */
