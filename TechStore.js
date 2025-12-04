@@ -52,33 +52,33 @@ let historicoVendas = [];
 
 function registarVenda(estoque, nome) {
 
-  const item = inventario.find(produto  => produto.produto === nome)
+  const item = inventario.find(produto  => produto.produto === nome);
   
   if(estoque <= item.quantidade){
 
-    let total = item.preco * estoque
+    let total = item.preco * estoque;
 
     let desconto = 0;
 
     if (total > 200){
-      desconto = total * 0.10
-      total -= desconto
+      desconto = total * 0.10;
+      total -= desconto;
     }
 
-      item.quantidade -= estoque
+      item.quantidade -= estoque;
 
-      console.log(`Produto Vendido: ${nome} - Qnt: ${estoque} UN - Desconto ${desconto} - Preço Total: ${total}.`)
+      console.log(`Produto Vendido: ${nome} - Qnt: ${estoque} UN - Desconto ${desconto} - Preço Total: ${total}.`);
 
-      historicoVendas.push({produto: nome, quantidade: estoque, total, desconto})
+      historicoVendas.push({produto: nome, quantidade: estoque, total, desconto});
 
   } else {
       console.log(nome, 'Sem Stock!');
   }
 }
 
-registarVenda(9, 'Portatil')
-registarVenda(1, 'Ipad')
-registarVenda(1, 'Coluna de Som')
+registarVenda(9, 'Portatil');
+registarVenda(1, 'Ipad');
+registarVenda(1, 'Coluna de Som');
 
 console.log('--Hisrotico de vendas--');
 
@@ -89,9 +89,7 @@ historicoVendas.forEach(venda => {
 //3.
 console.log("\n--3------");
 const totalInventario = inventario.reduce(
-  (acc, n) => acc + n.preco * n.quantidade,
-  0
-);
+  (acc, n) => acc + n.preco * n.quantidade, 0);
 console.log(`O total do inventário é: ${totalInventario.toFixed(2)} EUR`);
 console.log(inventario);
 
@@ -103,7 +101,7 @@ function limpezaStock() {
     if (inventario[i].quantidade === 0) {
       inventario.splice(i, 1);
     } else {
-      i++;
+      i++
     }
   }
 
@@ -122,9 +120,7 @@ console.log("\n--6------");
 
 function produtoPremium() {
   return inventario.reduce((produtoMaisCaro, produtoAtual) => {
-    return produtoAtual.preco > produtoMaisCaro.preco
-      ? produtoAtual
-      : produtoMaisCaro;
+    return produtoAtual.preco > produtoMaisCaro.preco ? produtoAtual : produtoMaisCaro;
   });
 }
 
@@ -140,9 +136,7 @@ function reporStock(nomeProduto, adicionarProduto) {
 
   if (unidade) {
     unidade.quantidade += adicionarProduto;
-    console.log(
-      `Produto: ${unidade.produto} -  Adicionado: ${adicionarProduto} - Total: ${unidade.quantidade}`
-    );
+    console.log(`Produto: ${unidade.produto} -  Adicionado: ${adicionarProduto} - Total: ${unidade.quantidade}`);
   }
 }
 
@@ -152,10 +146,9 @@ reporStock("Coluna de Som", 90);
 console.log("\n--8------");
 
 function listarProdutos() {
-  inventario.forEach((p) =>
-    console.log(`${p.produto} - quantidade: ${p.quantidade}`)
-  );
+  inventario.forEach((p) => console.log(`${p.produto} - quantidade: ${p.quantidade}`));
 }
+
 listarProdutos();
 
 //9. Adicionar Produto Novo:
@@ -170,4 +163,3 @@ inventario.push({
 
 console.log(inventario);
 
-//10. Aplicar Desconto
