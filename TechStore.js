@@ -1,5 +1,3 @@
-const { isValidElement } = require("react");
-
 const inventario = [
   {
     id: 1,
@@ -41,11 +39,11 @@ console.log("-------");
   return inventario;
 }
  */
-console.log(atualizarPreco(5, 800));
+/* console.log(atualizarPreco(5, 800)); */
 
 console.log("-------");
 
 console.log("-------");
 
-const totalInventario = inventario.reduce((acc, n) => acc + n.preco, 0);
-console.log(totalInventario);
+const totalInventario = inventario.reduce((acc, n) => acc + n.preco * n.quantidade, 0);
+console.log(`O total do inventário é: ${totalInventario.toFixed(2)} EUR`);
