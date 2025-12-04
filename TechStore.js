@@ -48,6 +48,8 @@ atualizarPreco(2, 900);
 //2.
 console.log("\n--2------");
 
+let historicoVendas = [];
+
 function registarVenda(estoque, nome) {
 
   const item = inventario.find(produto  => produto.produto === nome)
@@ -64,7 +66,10 @@ function registarVenda(estoque, nome) {
     }
 
       item.quantidade -= estoque
-      console.log(`Produto: ${nome} - Qnt: ${estoque} UN - Desconto ${desconto} - Preço Total: ${total}.`)
+
+      console.log(`Produto Vendido: ${nome} - Qnt: ${estoque} UN - Desconto ${desconto} - Preço Total: ${total}.`)
+
+      historicoVendas.push({produto: nome, quantidade: estoque, total, desconto})
 
   } else {
       console.log(nome, 'Sem Stock!');
@@ -74,6 +79,12 @@ function registarVenda(estoque, nome) {
 registarVenda(9, 'Portatil')
 registarVenda(1, 'Ipad')
 registarVenda(1, 'Coluna de Som')
+
+console.log('--Hisrotico de vendas--');
+
+historicoVendas.forEach(venda => {
+  console.log(`Produto: ${venda.produto} - Qnt: ${venda.quantidade} - Total: €${venda.total.toFixed(2)} - Desconto Aplicado: €${venda.desconto.toFixed(2)}`);
+});
 
 //3.
 console.log("\n--3------");
