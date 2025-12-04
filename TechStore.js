@@ -32,23 +32,47 @@ const inventario = [
 console.log(inventario);
 
 // 1.
-console.log("-1------");
+console.log("\n-1------");
 
 function atualizarPreco(id, novoPreco) {
+  const valor = inventario.find((produto) => produto.id === id);
 
-  const valor = inventario.find(produto  => produto.id === id)
-  
-  if(valor){
-      valor.preco = novoPreco
-      console.log(valor.produto, 'novo preço:', novoPreco)
+  if (valor) {
+    valor.preco = novoPreco;
+    console.log(valor.produto, "novo preço: €", novoPreco);
   }
 }
 
-atualizarPreco(2, 900)
+atualizarPreco(2, 900);
 
-//2. 
-console.log("-2------");
+//2.
+console.log("\n--2------");
 
+function registarVenda(estoque, nome) {
+  const item = inventario.find((produto) => produto.produto === nome);
+
+  if (estoque <= item.quantidade) {
+    item.quantidade -= estoque;
+    console.log(`Produto: ${nome} Qnt: ${estoque} UN - Vendido.`);
+  } else {
+    console.log(nome, "Quantidade insuficiente!");
+  }
+  let totalCompra = inventario.preco * estoque;
+  let desconto = 0;
+
+  if (totalCompra > 200) {
+    desconto = totalCompra * 0.1;
+    totalCompra -= desconto;
+  }
+  console.log(`Você ganhou desconto e pagou ${totalCompra}`);
+}
+
+registarVenda(9, "Portatil");
+registarVenda(1, "Ipad");
+registarVenda(1, "Coluna de Som");
+
+//3.
+console.log("\n--3------");
 const totalInventario = inventario.reduce(
   (acc, n) => acc + n.preco * n.quantidade,
   0
@@ -56,27 +80,8 @@ const totalInventario = inventario.reduce(
 console.log(`O total do inventário é: ${totalInventario.toFixed(2)} EUR`);
 console.log(inventario);
 
-//3.
-console.log("-3------");
-
-function registarVenda(estoque, nome) {
-
-  const item = inventario.find(produto  => produto.produto === nome)
-  
-  if(estoque <= item.quantidade){
-      item.quantidade -= estoque
-      console.log(`Produto: ${nome} Qnt: ${estoque} UN - Vendido.`)
-  } else {
-      console.log(nome, 'Quantidade insuficiente!');
-  }
-}
-
-registarVenda(9, 'Portatil')
-registarVenda(1, 'Ipad')
-registarVenda(1, 'Coluna de Som')
-
 //4.
-console.log("-4------");
+console.log("\n--4------");
 
 function limpezaStock() {
   for (let i = 0; i < inventario.length; ) {
@@ -87,32 +92,59 @@ function limpezaStock() {
     }
   }
 
-  console.log('Inventário atualizado:', inventario);
+  console.log("Inventário atualizado:", inventario);
 }
 
 limpezaStock();
 
 //5. Filtro de Categoria
-console.log("-5------");
-const audio = inventario.filter(i => i.categoria === "Som")
+console.log("\n--5------");
+const audio = inventario.filter((i) => i.categoria === "Som");
 console.log(audio);
 
 //6. Produto "Premium"
-console.log("-6------");
+console.log("\n--6------");
 
 function produtoPremium() {
   return inventario.reduce((produtoMaisCaro, produtoAtual) => {
-      return produtoAtual.preco > produtoMaisCaro.preco ? produtoAtual : produtoMaisCaro;
+    return produtoAtual.preco > produtoMaisCaro.preco
+      ? produtoAtual
+      : produtoMaisCaro;
   });
 }
 
-produtoPremium()
+produtoPremium();
 
 console.log(produtoPremium());
 
+//7. Repor Stock
+console.log("\n--7------");
+
+function reporStock(nomeProduto, adicionarProduto) {
+  const unidade = inventario.find((produto) => produto.produto === nomeProduto);
+
+  if (unidade) {
+    unidade.quantidade += adicionarProduto;
+    console.log(
+      `Produto: ${unidade.produto} -  Adicionado: ${adicionarProduto} - Total: ${unidade.quantidade}`
+    );
+  }
+}
+
+reporStock("Coluna de Som", 90);
+
+//8. Listar Produtos
+console.log("\n--8------");
+
+function listarProdutos() {
+  inventario.forEach((p) =>
+    console.log(`${p.produto} - quantidade: ${p.quantidade}`)
+  );
+}
+listarProdutos();
 
 //9. Adicionar Produto Novo:
-console.log("-9------");
+console.log("\n--9------");
 inventario.push({
   id: 6,
   categoria: "Fotografia",
@@ -122,3 +154,5 @@ inventario.push({
 });
 
 console.log(inventario);
+
+//10. Aplicar Desconto
