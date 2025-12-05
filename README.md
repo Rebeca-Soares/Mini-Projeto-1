@@ -10,11 +10,11 @@ As ações contidas nesse sistema ajudam e facilitam o dia a dia de quem gere o 
 
 ## 👣 Passos para percorrer o ficheiro JS
 <ins>Pré-requisitos:</ins> Node.js instalado e VS Code.
-	1.	Abra a pasta do projeto no VS Code.
-	2.	Abra o ficheiro .js que quer correr.
-	3.	Coloque breakpoints clicando à esquerda do número da linha (opcional).
-	4.	Abra a vista Run and Debug (atalho: Ctrl/Cmd+Shift+D).
-	5.	Com o ficheiro aberto, clique em Start Debugging (F5) para executar em modo debug.
+1. Abra a pasta do projeto no VS Code.
+2. Abra o ficheiro .js que quer correr.
+3. Coloque breakpoints clicando à esquerda do número da linha (opcional).
+4. Abra a vista Run and Debug (atalho: Ctrl/Cmd+Shift+D).
+5. Com o ficheiro aberto, clique em Start Debugging (F5) para executar em modo debug.
 
 ## ℹ️ Estruturas de dados escolhidas
 Inventario - um array de objetos para guardar todas informações necessárias a cada produto.
