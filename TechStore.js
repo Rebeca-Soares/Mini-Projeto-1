@@ -38,7 +38,7 @@ function atualizarPreco(id, novoPreco) {
     return valor;
   }
 
-  return null
+  return null;
 }
 
 let historicoVendas = [];
@@ -50,7 +50,7 @@ function registarVenda(quantidadeEscolhida, nome) {
   if (!item) {
     console.log(nome, 'não encontrado no inventário!');
     return null;
-  };
+  }
   
   if(quantidadeEscolhida <= item.quantidade){
 
@@ -72,6 +72,7 @@ function registarVenda(quantidadeEscolhida, nome) {
 
   } else {
       console.log(nome, 'Sem Stock!');
+      return null;
   }
 }
 function mostrarHistoricoVendas(){
@@ -87,20 +88,19 @@ function limpezaStock() {
   for (let i = 0; i < inventario.length; i++) {
     if (inventario[i].quantidade === 0) {
       inventario.splice(i, 1);
+      i--;
     } 
   }
   return inventario;
 }
 
 function filtrarCategoria (categoriaProduto){
-    let cat = inventario.filter((i) => i.categoria=== categoriaProduto);
-    return cat
+    return inventario.filter((i) => i.categoria=== categoriaProduto);
 }
 
 function produtoPremium() {
-  return inventario.reduce((produtoMaisCaro, produtoAtual) => {
-    return produtoAtual.preco > produtoMaisCaro.preco ? produtoAtual : produtoMaisCaro;
-  });
+  return inventario.reduce((produtoMaisCaro, produtoAtual) => produtoAtual.preco > produtoMaisCaro.preco ? produtoAtual : produtoMaisCaro, {preco: 0}
+  );
 }
 
 function reporStock(nomeProduto, adicionarProduto) {
@@ -108,9 +108,9 @@ function reporStock(nomeProduto, adicionarProduto) {
 
   if (unidade) {
     unidade.quantidade += adicionarProduto;
-    return unidade
+    return unidade;
   }
-  return null
+  return null;
 }
 
 function listarProdutos() {
