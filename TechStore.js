@@ -50,13 +50,13 @@ console.log("\n--2------");
 
 let historicoVendas = [];
 
-function registarVenda(estoque, nome) {
+function registarVenda(quantidadeEscolhida, nome) {
 
   const item = inventario.find(produto  => produto.produto === nome);
   
-  if(estoque <= item.quantidade){
+  if(quantidadeEscolhida <= item.quantidade){
 
-    let total = item.preco * estoque;
+    let total = item.preco * quantidadeEscolhida;
 
     let desconto = 0;
 
@@ -65,11 +65,11 @@ function registarVenda(estoque, nome) {
       total -= desconto;
     }
 
-      item.quantidade -= estoque;
+      item.quantidade -= quantidadeEscolhida;
 
-      console.log(`Produto Vendido: ${nome} - Qnt: ${estoque} UN - Desconto ${desconto} - Preço Total: ${total}.`);
+      console.log(`Produto Vendido: ${nome} - Qnt: ${quantidadeEscolhida} UN - Desconto ${desconto} - Preço Total: ${total}.`);
 
-      historicoVendas.push({produto: nome, quantidade: estoque, total, desconto});
+      historicoVendas.push({produto: nome, quantidade: quantidadeEscolhida, total, desconto});
 
   } else {
       console.log(nome, 'Sem Stock!');
@@ -97,12 +97,10 @@ console.log(inventario);
 console.log("\n--4------");
 
 function limpezaStock() {
-  for (let i = 0; i < inventario.length; ) {
+  for (let i = 0; i < inventario.length; i++) {
     if (inventario[i].quantidade === 0) {
       inventario.splice(i, 1);
-    } else {
-      i++
-    }
+    } 
   }
 
   console.log("Inventário atualizado:", inventario);
